@@ -1,27 +1,54 @@
-# You can remove 'pass' if you written code in the function
 # Exercise 1
-
 def save_scores(names, scores, filename):
-    file = open(filename,"w")
+    file = open(filename, "w")
     for i in range(len(names)):
-        file.write(f"{names[i]},{scores[i]}\n")
+        file.write(names[i] + "," + str(scores[i]) + "\n")
     file.close()
+
 # Exercise 2
 def average_score(filename):
-    # Write your code here
-    pass
+    average = 0
+    file = open(filename, "r")
+    lines = file.readlines()
+    for line in lines:
+        spl = line.split(",")
+        average = average + int(spl[1])
+    file.close()
+    return round(average / len(lines), 1)
 
 # Exercise 3
 def filter_passed(source, destination, pass_mark):
-    # Write your code here
-    pass
+    count = 0
+    file = open(source, "r")
+    lines = file.readlines()
+    file.close()
+    file_1 = open(destination, "w")
+    for line in lines:
+        spl = line.strip().split(",")
+        if int(spl[1]) >= pass_mark:
+            file_1.write(spl[0] + "," + spl[1] + "\n")
+            count += 1
+    return count
+    file_1.close()
 
 # Exercise 4
 def replace_word(filename, old_word, new_word):
-    # Write your code here
-    pass
+    file = open(filename, "r")
+    text = file.read()
+    file.close()
+    text = text.replace(old_word, new_word)
+    file = open(filename, "w")
+    file.write(text)
+    file.close()
+    return text
 
 # Exercise 5
 def remove_line(filename, line_number):
-    # Write your code here
-    pass
+    file = open(filename, "r")
+    lines = file.readlines()
+    file.close()
+    file = open(filename, "w")
+    for i in range(len(lines)):
+        if i != line_number - 1:
+            file.write(lines[i])
+    file.close()
