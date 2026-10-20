@@ -14,7 +14,7 @@ def average_score(filename):
         spl = line.split(",")
         average = average + int(spl[1])
     file.close()
-    return round(average / len(lines), 1)
+    average = round(average / len(lines), 1)
 
 # Exercise 3
 def filter_passed(source, destination, pass_mark):
@@ -28,7 +28,6 @@ def filter_passed(source, destination, pass_mark):
         if int(spl[1]) >= pass_mark:
             file_1.write(spl[0] + "," + spl[1] + "\n")
             count += 1
-    return count
     file_1.close()
 
 # Exercise 4
@@ -40,7 +39,6 @@ def replace_word(filename, old_word, new_word):
     file = open(filename, "w")
     file.write(text)
     file.close()
-    return text
 
 # Exercise 5
 def remove_line(filename, line_number):
